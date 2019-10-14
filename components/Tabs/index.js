@@ -13,7 +13,7 @@ axios.post('https://lambda-times-backend.herokuapp.com/topics')
 .then((response) => {
   console.log(response);
 
-  response.data.topics_url.forEach((tab) => {
+  response.data.topics.map((tab) => {
   const  newTab = new NewTopics(tab); 
  
   tabs.appendChild(newTab);
@@ -36,19 +36,19 @@ function tabCreator(topic) {
 
     nextTopic.textContent = topic;
 
-    nextTopic.map( (item) => {
-        let newTab = tabCreator(item);
+    // nextTopic.map( (item) => {
+    //     let newTab = tabCreator(item);
       
-        return newTab;
-      });
+    //     return newTab;
+    //   });
 
-     topics.appendChild(nextTopic);
+    topics.appendChild(nextTopic);
 
-     return topics;
+     return nextTopic;
 
     }
 
 
-const tab6 = tabCreator('New Tab');
+// const tab6 = tabCreator('New Tab');
 
-topics.appendChild(tab6):
+// topics.appendChild(tab6):
