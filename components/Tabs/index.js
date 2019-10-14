@@ -8,13 +8,13 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
-axios.get('https://lambda-times-backend.herokuapp.com/topics') 
+axios.post('https://lambda-times-backend.herokuapp.com/topics') 
 
 .then((response) => {
   console.log(response);
 
   response.data.topics_url.forEach((tab) => {
-  const  newTab = new newTopics(tab); 
+  const  newTab = new NewTopics(tab); 
  
   tabs.appendChild(newTab);
  });
@@ -26,6 +26,7 @@ console.log(error);
 });
 
 const topics = document.querySelector('.topics');
+const tab = document.querySelector('.tab')
 
 function tabCreator(topic) {
 
