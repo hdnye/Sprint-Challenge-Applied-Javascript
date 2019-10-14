@@ -49,3 +49,5 @@ function tabCreator(topic) {
 
 
 const tab6 = tabCreator('New Tab');
+
+topics.appendChild(tab6):
