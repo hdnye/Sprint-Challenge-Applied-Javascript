@@ -31,32 +31,13 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
     const currentArray = articles[key];
     currentArray.forEach(card => {
       cardCreator(card);
-      console.log(currentArray);
-    })
+    
+    console.log(currentArray);
+    article(currentArray);
+  })
   }
  
-//     response.data.articles.bootstrap.map( (card) => {    
-//         cardCont.appendChild(article(card));
-
-//   })
-//     response.data.articles.javascript.map( (card) => {    
-//     cardCont.appendChild(article(card));
-
-// })
-//     response.data.articles.jquery.map( (card) => {    
-//     cardCont.appendChild(article(card));
-
-
-// })
-//     response.data.articles.node.map( (card) => {    
-//     cardCont.appendChild(article(card));
-
-// })
-
-//     response.data.articles.technology.map( (card) => {    
-//     cardCont.appendChild(article(card));
-
-// })
+//    
   })
 
 .catch((error) => {
@@ -79,24 +60,25 @@ function article(info){
    
   
     headline.classList.add('card');
-    authImage.classList.add('img-container');
-    byline.classList.add('span');
+    authImage.classList.add('author');
+    byline.classList.add('author');
     
        
-    headline.appendChild(authImage);
-    author.appendChild(byline);
+   card.appendChild(headline);
+   author.appendChild(authImage);
+   author.appendChild(byline);
        
-     
-    return card;
+     cardCont.appendChild(info);
+     return info;
   } 
 
     
-  info.forEach( (data) => {  
+  // info.forEach( (data) => {  
       
-        cardCont.appendChild(article(data.articles));
+  //       cardCont.appendChild(article(data.articles));
         
-    })
+  //   })
      
 
-  // console.log(article());
+  // console.log(article(info));
   
