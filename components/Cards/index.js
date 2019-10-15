@@ -22,29 +22,42 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
   .then((response) => {
   console.log(response);
 
+  const art = response.data.articles;
+  console.log(Object.keys(art));
+
+  let articles;
+
+  for (let key in articles) {
+    const currentArray = articles[key];
+    currentArray.forEach(card => {
+      cardCreator(card);
+      console.log(currentArray);
+    })
+  }
  
-    response.data.articles.bootstrap.map( (card) => {    
-        cardCont.appendChild(article(card));
+//     response.data.articles.bootstrap.map( (card) => {    
+//         cardCont.appendChild(article(card));
 
+//   })
+//     response.data.articles.javascript.map( (card) => {    
+//     cardCont.appendChild(article(card));
+
+// })
+//     response.data.articles.jquery.map( (card) => {    
+//     cardCont.appendChild(article(card));
+
+
+// })
+//     response.data.articles.node.map( (card) => {    
+//     cardCont.appendChild(article(card));
+
+// })
+
+//     response.data.articles.technology.map( (card) => {    
+//     cardCont.appendChild(article(card));
+
+// })
   })
-    response.data.articles.javascript.map( (card) => {    
-    cardCont.appendChild(article(card));
-
-})
-    response.data.articles.jquery.map( (card) => {    
-    cardCont.appendChild(article(card));
-
-
-})
-    response.data.articles.node.map( (card) => {    
-    cardCont.appendChild(article(card));
-
-})
-
-    response.data.articles.technology.map( (card) => {    
-    cardCont.appendChild(article(card));
-
-})
 
 .catch((error) => {
 console.log(error);
@@ -58,7 +71,7 @@ const imgCont = document.querySelector('.img-container')
 const author = document.querySelector('.author')
 
 
-function article(){
+function article(info){
 
     const headline = document.createElement('div');
     const authImage = document.createElement('img'); 
@@ -85,5 +98,5 @@ function article(){
     })
      
 
-  console.log(article());
+  // console.log(article());
   

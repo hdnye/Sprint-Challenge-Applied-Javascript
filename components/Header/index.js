@@ -11,22 +11,23 @@
 
 function Header() {
 
-const header = document.createElement('header');
-const date = document.createElement('date');
+const header = document.createElement('div');
+const date = document.createElement('span');
 const title = document.createElement('h1');
-const span = document.createElement('temp');
+const span = document.createElement('span');
 
 header.classList.add('header');
-date.classList.add('span', 'date');
-span.classList.add('span', 'temp');
+date.classList.add('date');
+title.classList.add('h1');
+span.classList.add('temp');
 
-date.textContent = 'SMARCH 28, 2019'
-title.textContent = 'Lambda Times'
-span.textContent = '98°'
+title.textContent = 'Lambda Times';
+date.textContent = 'SMARCH 28, 2019';
+span.textContent = '98°';
 
+header.appendChild(date);
 header.appendChild(title);
-span.appendChild(date);
-title.appendChild(span);
+header.appendChild(span);
 
 return header;  
     

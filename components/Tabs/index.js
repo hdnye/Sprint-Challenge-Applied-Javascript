@@ -8,15 +8,15 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
-axios.post('https://lambda-times-backend.herokuapp.com/topics') 
+axios.get('https://lambda-times-backend.herokuapp.com/topics') 
 
 .then((response) => {
-  console.log(response);
+  console.log(response.data.topics);
 
-  response.data.topics.map((tab) => {
-  const  newTab = new NewTopics(tab); 
- 
-  tabs.appendChild(newTab);
+  response.data.topics.forEach((tab) => {
+    console.log(tab);
+    tabCreator(tab);
+  
  });
 
 })
@@ -32,7 +32,7 @@ function tabCreator(topic) {
 
     const nextTopic = document.createElement('div');
 
-    nextTopic.classList.add('.tab');
+    nextTopic.classList.add('tab');
 
     nextTopic.textContent = topic;
 
@@ -49,6 +49,4 @@ function tabCreator(topic) {
     }
 
 
-// const tab6 = tabCreator('New Tab');
-
-// topics.appendChild(tab6):
+//console.log(tabCreator(topic));
