@@ -13,8 +13,8 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
 .then((response) => {
   console.log(response.data.topics);
 
-  response.data.topics.forEach((tab) => {
-    console.log(tab);
+  response.data.topics.forEach((tab) => { 
+  
     tabCreator(tab);
   
  });
@@ -35,12 +35,6 @@ function tabCreator(topic) {
     nextTopic.classList.add('tab');
 
     nextTopic.textContent = topic;
-
-    // nextTopic.map( (item) => {
-    //     let newTab = tabCreator(item);
-      
-    //     return newTab;
-    //   });
 
     topics.appendChild(nextTopic);
 

@@ -18,67 +18,73 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
+
+const cardCont = document.querySelector('.cards-container')
+
+
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
   .then((response) => {
-  console.log(response);
+  
+  const articles = response.data.articles; /*--Assign const & get obj values from console--*/
 
-  const art = response.data.articles;
-  console.log(Object.keys(art));
-
-  let articles;
-
-  for (let key in articles) {
-    const currentArray = articles[key];
-    currentArray.forEach(card => {
-      cardCreator(card);
-    
-    console.log(currentArray);
-    article(currentArray);
-  })
-  }
+  for (let key in articles) {  /*--used for in loop to get obj :values from array --*/
+     
+      let currentArray = articles[key]; /*-- called for the data keys: to return the value --*/
+        
+       currentArray.forEach(content => {
+        
+        return cardCont.appendChild(article(content)); /*-- appendChild to parent container invoking
+        f() below passing the forEach cb --*/
  
-//    
-  })
+      });
+  }
+})
+ 
+  .catch((error) => {
+    console.log(error);
 
-.catch((error) => {
-console.log(error);
-});
-
-
-const cardCont = document.querySelector('.card-container')
-const card = document.querySelector('.card')
-const headline = document.querySelector('.headline')
-const imgCont = document.querySelector('.img-container')
-const author = document.querySelector('.author')
+});  
 
 
-function article(info){
 
+
+
+function article(info) {
+
+  /*--Create HTML Elements--*/
+
+    const card = document.createElement('card');
     const headline = document.createElement('div');
+    const author = document.createElement('div');
+    const imgCont = document.createElement('image-container');
     const authImage = document.createElement('img'); 
     const byline = document.createElement('span');
-   
+
+ /*--Append Elements to add to the DOM--*/ 
   
-    headline.classList.add('card');
-    authImage.classList.add('author');
-    byline.classList.add('author');
+    card.appendChild(headline);
+    card.appendChild(author);
+    author.appendChild(imgCont);
+    author.appendChild(byline);
+    imgCont.appendChild(authImage);
     
+ /*--Create Classes --*/ 
+
+    card.classList.add('card');
+    headline.classList.add('headline');
+    author.classList.add('author');
+    authImage.classList.add('img-container');
+    byline.classList.add('author');
+
+  /*-- Add values pulled from server to the new elements --*/
+
+    headline.textContent = info.headline;
+    authImage.src = info.authorPhoto;
+    byline.textContent = info.authorName;
        
-   card.appendChild(headline);
-   author.appendChild(authImage);
-   author.appendChild(byline);
-       
-     cardCont.appendChild(info);
-     return info;
+          
+    return card;
   } 
 
     
-  // info.forEach( (data) => {  
-      
-  //       cardCont.appendChild(article(data.articles));
-        
-  //   })
-     
-
-  // console.log(article(info));
-  
+ 
